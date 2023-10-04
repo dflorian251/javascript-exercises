@@ -1,19 +1,15 @@
 const removeFromArray = function(array, ...shouldRemoved) { // ...shouldRemoved is array 
-    let finalArray = [];
-    finalArray = finalArray.concat(array);
-    for (let i = 0; i<array.length; i++) {
-        let j = 0 ;
-        while (j<shouldRemoved.length) {
-            if (array[i] == shouldRemoved[j]) {
-                finalArray.splice(i,1);
-            }
-            j++ ;
-        } 
-        //finalArray = finalArray.concat(element) ;
+    array.sort();
+    shouldRemoved.sort();   /* Sorting the arrays cause like that we don't 
+    "skip" items that should be removed */
+    console.log(shouldRemoved);
+    for (let i=0; i<array.length; i++){
+        if (shouldRemoved.includes(array[i])){
+            array.splice(i,1);
+            i-- ;
+        }
     }
-    console.log(finalArray);
-    return finalArray ; 
-};
-
+    return array ;
+}
 // Do not edit below this line
 module.exports = removeFromArray;
